@@ -35,13 +35,11 @@ def eliminar_pelicula(id):
     respuesta = f"\nPelicula {key} eliminada"
     return respuesta 
 
-puerto = 8000
-server = SimpleXMLRPCServer(("0.0.0.0", puerto))
-server.register_function(obtener_peliculas, "obtener_peliculas")
-server.register_function(agregar_pelicula, "agregar_pelicula")
-server.register_function(actualizar_pelicula, "actualizar_pelicula")
-server.register_function(eliminar_pelicula, "eliminar_pelicula")
+servidor = SimpleXMLRPCServer(("0.0.0.0", 5000))
+servidor.register_function(obtener_peliculas, "obtener_peliculas")
+servidor.register_function(agregar_pelicula, "agregar_pelicula")
+servidor.register_function(actualizar_pelicula, "actualizar_pelicula")
+servidor.register_function(eliminar_pelicula, "eliminar_pelicula")
 
 print("Servidor de cine listo...")
-server.serve_forever()
-
+servidor.serve_forever()

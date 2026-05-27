@@ -1,26 +1,25 @@
 version: '3.8'
 
 services:
-  calculadora:
+  servidor:
     build:
-      context: ./calculadora
+      context: ./servidor
       dockerfile: Dockerfile
     container_name: docker-comps
     ports:
       - "5000:5000" 
     depends_on:
-      - suma
-    networks:
-      - red_calculadora
+      - ./cliente
 
-  suma:
+  cliente:
     build:
-      context: ./suma
+      context: ./cliente
       dockerfile: Dockerfile
-    container_name: servicio_suma
-    networks:
-      - red_calculadora
+    container_name: servicio_cliente
+
 
 networks:
   red_calculadora:
     driver: bridge
+
+# comando para levantar los servicios: docker-compose up -d

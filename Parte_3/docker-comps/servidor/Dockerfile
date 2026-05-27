@@ -1,10 +1,9 @@
 FROM python:latest
 
-COPY servidor.py .
+COPY servidor_cine.py .
 
 RUN pip install flask
-RUN pip install requests
 
 EXPOSE 5000
 
-CMD ["python", "servidor.py"]
+CMD ["python", "servidor_cine.py"]
